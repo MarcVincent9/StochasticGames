@@ -67,20 +67,21 @@ class PowerGrid(StochasticGame):
                     p_recover *= (1 - self.p_upf)
                 return {0: 1-p_recover, 1: p_recover}
             
-        list_dicts = [next_status(i, status) for i, status in enumerate(state)]
-        list_states = list(it.product(*tuple(tuple(d.keys()) for d in list_dicts)))
+        list_status_probability_distributions = [next_status(i, status) for i, status in enumerate(state)]
+        list_possible_next_states = list(it.product(*tuple(tuple(d.keys()) for d in list_status_probability_distributions)))
         
         def state_probability(state):
             p = 1
             for i, status in enumerate(state):
-                p *= list_dicts[i][status]
+                p *= list_status_probability_distributions[i][status]
             return p
         
-        return {state: state_probability(state) for state in list_states}
+        return {state: state_probability(state) for state in list_possible_next_states}
             
     
     def reward(self, player, state, actions):
-        return 0 # A FAIRE
+        rew = self.graph.cost(state)
+        return rew if player == 0 else -rew
     
     
     def toString(self, state):

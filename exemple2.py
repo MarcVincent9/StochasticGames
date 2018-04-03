@@ -27,6 +27,9 @@ class Graph:
         
     def nb_links(self):
         return len(self.list_links)
+    
+    def cost(self, state):
+        
         
 
 g = Graph()

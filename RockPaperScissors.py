@@ -14,8 +14,8 @@ class RockPaperScissors(StochasticGame):
     dict = {"pierre":0, "papier":1, "ciseaux":2}
     list_actions = list(dict.keys())
     rewards_matrix = np.array([[0, -1, 1],
-                        [1, 0, -1],
-                        [-1, 1, 0]])
+                               [1, 0, -1],
+                               [-1, 1, 0]])
 
 
     def states(self):
@@ -40,7 +40,8 @@ class RockPaperScissors(StochasticGame):
     
     def reward(self, player, state, actions):
         a1, a2 = actions
-        return self.rewards_matrix[self.dict[a1], self.dict[a2]]
+        rew = self.rewards_matrix[self.dict[a1], self.dict[a2]]
+        return rew if player == 0 else -rew
     
     
     def toString(self, state):

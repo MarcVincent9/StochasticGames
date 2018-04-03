@@ -13,7 +13,7 @@ class Soccer(StochasticGame):
     list_actions = list(deplacement.keys())
     
     
-    def __init__(self, size = (4, 5)): # A FAIRE
+    def __init__(self, size = (4, 5)): # A FAIRE : size modifiable ?
         self.cells = [(i, j) for i in range(1, 5) for j in range(1, 6)]    
         self.list_states = [(c1, c2, b) for c1 in self.cells for c2 in self.cells for b in [1, 2] if c1 != c2]
         self.starting_positions = ((3, 2), (2, 4))

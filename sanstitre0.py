@@ -6,6 +6,7 @@ Created on Wed Mar 21 18:33:03 2018
 """
 
 # preuve qu'on ne peut pas surcharger les methodes...
+# a la limite : methode de verification des parametres dans SG...
 
 import abc
 
