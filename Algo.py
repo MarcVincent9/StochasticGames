@@ -11,9 +11,9 @@ class Algo:
         self.game = game
         
         # strategies of all players (other initializations possible):
-        # list (for each player) of dictionaries (for each state) of dictionaries (probability of each action for given state)
-        self.pi = [{s: {a: 1/len(self.game.actions()[i]) for a in self.game.actions()[i]}\
-                    for s in self.game.states()} for i in range(self.game.nb_players())]
+        # dictionary (for each player) of dictionaries (for each state) of dictionaries (probability of each possible action)
+        self.pi = {p: {s: {a: 1/len(self.game.actions(p, s)) for a in self.game.actions(p, s)}\
+                    for s in self.game.states()} for p in self.game.players()}
         
         # value of the game for each state
         self.V = {s:0 for s in self.game.states()}

@@ -5,15 +5,15 @@ Created on Mon Mar 19 18:49:12 2018
 @author: Marc
 """
 
-from StochasticGame import StochasticGame
+from NullSum2PlayerStochasticGame import NullSum2PlayerStochasticGame
 
-class Soccer(StochasticGame):
+class Soccer(NullSum2PlayerStochasticGame):
     
     deplacement = {"N":(-1, 0), "S":(1, 0), "E":(0, 1), "W":(0, -1), "stand":(0, 0)}
     list_actions = list(deplacement.keys())
     
     
-    def __init__(self, size = (4, 5)): # A FAIRE : size modifiable ?
+    def __init__(self):
         self.cells = [(i, j) for i in range(1, 5) for j in range(1, 6)]    
         self.list_states = [(c1, c2, b) for c1 in self.cells for c2 in self.cells for b in [1, 2] if c1 != c2]
         self.starting_positions = ((3, 2), (2, 4))
@@ -24,10 +24,6 @@ class Soccer(StochasticGame):
         
     def next_position(self, position, action):
         return tuple(map(sum, zip(position, self.deplacement[action])))
-    
-    
-    def nb_players(self):
-        return 2
     
     
     def states(self):
@@ -50,9 +46,8 @@ class Soccer(StochasticGame):
     
         # positions voulues
         pos1, pos2, b = state
-        action1, action2 = actions
-        dest1 = self.next_position(pos1, action1)
-        dest2 = self.next_position(pos2, action2)
+        dest1 = self.next_position(pos1, actions[0])
+        dest2 = self.next_position(pos2, actions[1])
         
         # but
         if (b == 1 and dest1 in self.goal_positions) or (b == 2 and dest2 in self.goal_positions):
@@ -84,20 +79,19 @@ class Soccer(StochasticGame):
         return {(dest1, dest2, b): 1}
     
     
-    def reward(self, player, state, actions):
+    def player0_reward(self, state, actions):
     
         # positions voulues
         pos1, pos2, b = state
-        action1, action2 = actions
-        dest1 = tuple(map(sum, zip(pos1, self.deplacement[action1])))
-        dest2 = tuple(map(sum, zip(pos2, self.deplacement[action2])))
+        dest1 = self.next_position(pos1, actions[0])
+        dest2 = self.next_position(pos2, actions[1])
         
         # but
-        if (b == 1 and dest1 in self.right_goal_positions): #or (b == 2 and dest2 in self.right_goal_positions):
-            return 1 if player == 0 else -1
+        if (b == 1 and dest1 in self.right_goal_positions) or (b == 2 and dest2 in self.right_goal_positions):
+            return 1
         
-        if (b == 2 and dest2 in self.left_goal_positions): #or (b == 1 and dest1 in self.left_goal_positions):
-            return -1 if player == 0 else 1
+        if (b == 2 and dest2 in self.left_goal_positions) or (b == 1 and dest1 in self.left_goal_positions):
+            return -1
         
         return 0
     

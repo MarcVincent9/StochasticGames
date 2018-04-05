@@ -12,7 +12,7 @@ class Test:
     def __init__(self, game, pi):
         self.g = game
         self.current_state = self.roulette(game.initial_state())
-        self.total_rewards = (0,) * game.nb_players()
+        self.total_rewards = {player: 0 for player in game.players()}
         self.t = 0
         self.pi = pi
     
@@ -30,15 +30,17 @@ class Test:
             
             
     def discounted_rewards(self, state, actions):
-        return tuple((self.g.gamma() ** self.t) * r for r in self.g.rewards(state, actions))
+        return {player: (self.g.gamma() ** self.t) * r for player, r in self.g.rewards(state, actions).items()}
     
-        
+    
     def step(self, actions):
         
         self.t += 1
         
         # rewards update
-        self.total_rewards = tuple(map(sum, zip(self.total_rewards, self.discounted_rewards(self.current_state, actions))))
+        def dict_sum(d1, d2):
+            return {k: d1[k] + d2[k] for k in d1.keys()}
+        self.total_rewards = dict_sum(self.total_rewards, self.discounted_rewards(self.current_state, actions))
         
         # random transition to next state
         self.current_state = self.roulette(self.g.transition(self.current_state, actions))

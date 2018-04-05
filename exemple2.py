@@ -12,44 +12,19 @@ from PowerGrid import PowerGrid
 class Graph:
     
     def __init__(self):
-        self.list_links = []
-        self.list_buses = {}
-    
-    def addLink(self, bus1, bus2):
-        if bus1 in self.list_buses.keys() and bus2 in self.list_buses.keys() and\
-           (bus1, bus2) not in self.list_links and (bus2, bus1) not in self.list_links:
-            self.list_links.append((bus1, bus2))
-        else:
-            raise(ValueError)
-            
-    def addBus(self, value):
-        self.list_buses[len(self.list_buses)] = value # positive: supply; negative: load
+        self.list_links = [20, 10, 30, 55, 25]
         
     def nb_links(self):
         return len(self.list_links)
     
     def cost(self, state):
-        
+        pass
         
 
 g = Graph()
-g.addBus(-160)
-g.addBus(-200)
-g.addBus(-370)
-g.addBus(500)
-g.addBus(257.8)
-g.addLink(0, 2)
-g.addLink(0, 1)
-g.addLink(1, 2)
-g.addLink(1, 3)
-g.addLink(2, 4)
-
-
-
-
 game = PowerGrid(g, .5, 1, .6, 0, 2)
 
-pi = [{s: {a: 1/len(game.actions()[i]) for a in game.actions()[i]} for s in game.states()} for i in range(game.nb_players())]
+pi = {p: {s: {a: 1/len(game.actions(p, s)) for a in game.actions(p, s)} for s in game.states()} for p in game.players()}
 test = Test(game, pi)
 
 test.step(((1,2), (1,)))

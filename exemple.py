@@ -13,7 +13,7 @@ from Test import Test
 game = RockPaperScissors()
 #game = Soccer()
 
-pi = [{s: {a: 1/len(game.actions(p, s)) for a in game.actions(p, s)} for s in game.states()} for p in range(game.nb_players())]
+pi = [{s: {a: 1/len(game.actions(p, s)) for a in game.actions(p, s)} for s in game.states()} for p in game.players()]
 test = Test(game, pi)
 
 #test.step(("pierre", "papier"))

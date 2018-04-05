@@ -6,10 +6,10 @@ Created on Tue Mar 20 01:36:38 2018
 """
 
 
-from StochasticGame import StochasticGame
+from NullSum2PlayerStochasticGame import NullSum2PlayerStochasticGame
 import itertools as it
 
-class PowerGrid(StochasticGame):
+class PowerGrid(NullSum2PlayerStochasticGame):
     
     def __init__(self, graph, p_pf, p_upf, p_pr, p_upr, budget): # parametres plus clairs...
         self.graph = graph
@@ -24,10 +24,6 @@ class PowerGrid(StochasticGame):
         
         # on réduit l'espace d'actions aux actions dominantes, celles qui utilisent tout le budget
         self.list_actions = list(it.combinations(range(graph.nb_links()), budget))
-        
-        
-    def nb_players(self):
-        return 2
     
     
     def states(self):
@@ -38,12 +34,16 @@ class PowerGrid(StochasticGame):
         return self.list_actions
     
     
+    def gamma(self):
+        return .9
+    
+    
     def initial_state(self):
         return {(1,) * self.graph.nb_links():1}
     
     
     def transition(self, state, actions):
-        attack, defense = actions
+        defense, attack = actions[0], actions[1]
         
         #if attack not in self.list_actions or defense not in self.list_actions:
         #    raise(ValueError)
@@ -79,9 +79,8 @@ class PowerGrid(StochasticGame):
         return {state: state_probability(state) for state in list_possible_next_states}
             
     
-    def reward(self, player, state, actions):
-        rew = self.graph.cost(state)
-        return rew if player == 0 else -rew
+    def player0_reward(self, state, actions):
+        return self.graph.cost(state)
     
     
     def toString(self, state):

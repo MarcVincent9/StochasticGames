@@ -7,6 +7,10 @@ Created on Wed Mar 14 20:38:50 2018
 
 
 class StochasticGame:
+    
+    # s'assurer d'un ordre sur états/actions/joueurs au cas où l'utilisateur utiliserait des sets (définir cet ordre dans init)
+    # ou alors c'est son problème
+    
         
     def states(self):
         """Return the list of all states.
@@ -14,10 +18,19 @@ class StochasticGame:
         :rtype: list of (tuples of) integers/strings
         """
         raise(NotImplementedError)
+        
+        
+    def players(self):
+        """Return the list of all players.
+        
+        :rtype: list of integers/strings
+        """
+        raise(NotImplementedError)
     
     
+    # ou alors actions(self, state) qui renvoie un dico joueur: liste_actions...
     def actions(self, player, state):
-        """Return the list of given player's actions in given state.
+        """Return the list of given player's possible actions in given state.
         
         :param player: player ID
         :param state: state
@@ -27,60 +40,51 @@ class StochasticGame:
     
     
     def nb_players(self):
-        """Return the number of players. Players are identified by their ID, starting from 0.
+        """Return the number of players.
         
         :rtype: integer
         """
-        raise(NotImplementedError)
-        
-        
-    def players(self): # renvoie liste des joueurs (eg avec strings) : inverser abstraction ac nb_players ?
-        """Return the list of all players.
-        
-        :rtype: list of...
-        """
-        return list(range(self.nb_players())) # actions et rewards de tous les joueurs seraient alors des dicos...
-        # penser à modif la doc en conséquence, et Algo
+        return len(self.players())
     
     
     def gamma(self):
         """Return the discount factor.
         
-        :rtype: float between 0 and 1 (default = 1)
+        :rtype: float in [0, 1[
         """
-        return 1.
+        raise(NotImplementedError)
         
        
     def transition(self, state, actions):
         """Return a probability distribution for the next state.
         
         :param state: current state
-        :param actions: tuple of each player's action (sorted by player ID)
+        :param actions: dictionary (key: player; value: action)
         :rtype: dictionary {state: probability}
         """
         raise(NotImplementedError)
         
         
-    def reward(self, player, state, actions): # player comme argument par coherence avec actions(), mais pas super pour l'optimisation en somme nulle
-        """Return the reward of a player given a state and the actions of all players.
+    # _reward n'est finalement rien d'autre qu'une fonction auxiliaire. Pourquoi ne pas laisser à l'utilisateur le soin d'en utiliser une s'il le veut, pour ne garder que rewards ?
+    def _reward(self, player, state, actions):
+        """Return the immediate reward of a player given a state and the actions of all players. You should implement either this function or rewards(self, state, actions)
         
         :param player: player ID
         :param state: current state
-        :param actions: tuple of each player's action (sorted by player ID)
+        :param actions: dictionary (key: player; value: action)
         :rtype: integer or float
         """
-        pass # plutôt que raise(NotImplementedError) ?
+        raise(NotImplementedError)
         
         
-    def rewards(self, state, actions): # solution ?
-        """Return the reward of all players given a state and the actions of all players.
+    def rewards(self, state, actions):
+        """Return the immediate reward of all players given a state and the actions of all players. You should implement either this function or _reward(self, player, state, actions)
         
         :param state: current state
-        :param actions: tuple of each player's action (sorted by player ID)
-        :rtype: tuple of integers/floats
+        :param actions:  dictionary (key: player; value: action)
+        :rtype:  dictionary (key: player; value: reward)
         """
-        # verif que reward est implementee...
-        return tuple(self.reward(player, state, actions) for player in self.players())
+        return {player: self._reward(player, state, actions) for player in self.players()}
         
         
     def initial_state(self):
