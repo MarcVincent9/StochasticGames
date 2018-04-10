@@ -8,6 +8,7 @@ Created on Wed Apr  4 21:40:10 2018
 import numpy as np
 import random
 
+
 def roulette(dict):
     rnd = np.random.rand()
     tmp = 0
@@ -43,3 +44,4 @@ def littman(game, explor, decay):
         alpha *= decay
         
     return pi, V
+    

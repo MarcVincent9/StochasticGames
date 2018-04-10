@@ -31,7 +31,10 @@ class Soccer(NullSum2PlayerStochasticGame):
     
     
     def actions(self, player, state): # ya peut-être plus propre à faire
-        return [a for a in self.list_actions if self.next_position(state[player], a) in self.cells + list(self.goal_positions)]
+        def allowed(action):
+            position = self.next_position(state[player], action)
+            return position in self.cells or (position in list(self.goal_positions) and state[2] == player+1)
+        return [action for action in self.list_actions if allowed(action)]
     
     
     def gamma(self):
