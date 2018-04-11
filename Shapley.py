@@ -71,7 +71,7 @@ game = Soccer()
 
 
 # test maximin
-"""
+'''
 V = {s: np.random.rand() for s in game.states()}
 p0, p1 = game.players()[0], game.players()[1]
 
@@ -92,8 +92,8 @@ def maj_G(V):
 G = maj_G(V)
 state = 1
 print(sgr.maximin(game, G, state))
-"""
 
+'''
 
 # test shapley
 
