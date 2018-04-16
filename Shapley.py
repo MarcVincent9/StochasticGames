@@ -41,11 +41,9 @@ def new_V_and_pi(game, V):
 
             
             
-def equilibre(game, V1, V2, epsilon):
-    for state in game.states():
-        if abs(V1[state] - V2[state]) > epsilon:
-            return False
-    return True
+# renvoie la différence maximale entre les valeurs de deux dictionnaires de mêmes clefs
+def ecart(V1, V2):
+    return max(abs(V1[state] - V2[state]) for state in V1.keys())
 
 
 
@@ -60,7 +58,7 @@ def shapley(game, epsilon):
     ite = 1
     
     # on répète jusqu'à converger
-    while not(equilibre(game, V, V2, epsilon)):
+    while ecart(V, V2) > epsilon:
         V = copy.deepcopy(V2)
         V2, pi = new_V_and_pi(game, V)
         ite += 1
