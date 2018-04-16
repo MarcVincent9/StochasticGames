@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar 19 23:13:47 2018
-
-@author: Marc
 """
 
 class Algo:

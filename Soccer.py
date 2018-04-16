@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar 19 18:49:12 2018
-
-@author: Marc
 """
 
 from NullSum2PlayerStochasticGame import NullSum2PlayerStochasticGame

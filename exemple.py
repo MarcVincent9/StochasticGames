@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar 19 20:58:06 2018
-
-@author: Marc
 """
 
 from Soccer import Soccer

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr 10 21:19:57 2018
-
-@author: Marc
 """
 
 import numpy as np
@@ -10,10 +8,9 @@ from gurobipy import *
 
 
 # pour un jeu stochastique à somme nulle à deux joueurs 'game', résout le jeu statique associé à l'état 'state'
-# avec G le gain espéré sous la forme {état : {action du joueur 1 : np.array[gain pour les actions du joueur 0]}}
+# avec G le gain espéré pour cet état sous la forme {action du joueur 1 : {action du joueur 0 : gain}}
 # le joueur 0 cherche à maximiser son gain
-def maximin(game, G, state):
-    #print(state)
+def maximin(game, expected_rewards, state):
     
     try:
         
@@ -21,21 +18,21 @@ def maximin(game, G, state):
         
         # Création du modèle
         mod = Model("jeu_simple")
-        mod.setParam('OutputFlag', False)
+        mod.setParam('OutputFlag', False) # pas d'affichage console
         
         # Variables
         V = mod.addVar(lb = -GRB.INFINITY, vtype=GRB.CONTINUOUS, name="V") # V peut être < 0
         pi_s = np.array([mod.addVar(vtype=GRB.CONTINUOUS, name="p_"+str(action0)) for action0 in game.actions(p0, state)])
         mod.update()
-        #print(pi_s)
         
         # Objectif
         mod.setObjective(V, GRB.MAXIMIZE)
         
         # Contraintes
         for action1 in game.actions(p1, state):
-            #print(G[state][action1])
-            mod.addConstr(V <= np.dot(pi_s, G[state][action1]), "")
+            # conversion dictionnaire > np.array en respectant l'ordre des actions
+            expected_rewards_action1 = np.array([expected_rewards[action1][action0] for action0 in game.actions(p0, state)])
+            mod.addConstr(V <= np.dot(pi_s, expected_rewards_action1), "")
             
         mod.addConstr(sum(pi_s) == 1, "")
         
@@ -49,11 +46,3 @@ def maximin(game, G, state):
     
     except GurobiError:
         print('Error reported')
-        
-        
-def value(game, G, state):
-    return maximin(game, G, state)[0]
-
-
-def strategy(game, G, state):
-    return maximin(game, G, state)[1]

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 20 01:36:38 2018
-
-@author: Marc
 """
 
 
