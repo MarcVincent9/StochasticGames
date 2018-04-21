@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 20 15:55:04 2018
-
-@author: Marc
 """
 
 from Test import Test

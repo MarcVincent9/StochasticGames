@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Mar 14 20:38:50 2018
-
-@author: Marc
 """
 
+import itertools as it
 
 class StochasticGame:
     
@@ -93,4 +92,12 @@ class StochasticGame:
         :rtype: dictionary {state: probability}
         """
         raise(NotImplementedError)
+        
+        
+    def check_transitions(self, epsilon):
+        for state in self.states():
+            for actions in it.product(self.actions(player, state) for player in self.players()):
+                if abs(1 - sum(self.transition(state, actions).values())) > epsilon:
+                    return False
+        return True
         

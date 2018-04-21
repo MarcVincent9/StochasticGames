@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr  4 20:07:51 2018
-
-@author: Marc
 """
 
 from StochasticGame import StochasticGame

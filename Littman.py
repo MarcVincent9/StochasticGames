@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr  4 21:40:10 2018
-
-@author: Marc
 """
 
 import numpy as np
 import random
+import StaticGameResolution as sgr
 
 
 def roulette(dict):
@@ -18,30 +17,43 @@ def roulette(dict):
             return s
 
 
-def littman(game, explor, decay):
-    
+def MinimaxQ(game, explor, decay,display,iteration,choiceActPlayerB,playerA,playerB,policyplayerB):
+
     # initialize
-    p0, p1 = game.players[0], game.players[1]
-    Q = {(s, a, o): 1 for s in game.states() for a in game.actions(p0, s) for o in game.actions(p1, s)}
-    V = {s: 1 for s in game.states()}
-    pi = {s: {a: 1/len(game.actions(p0, s)) for a in game.actions(p0, s)} for s in game.states()}
+   
+    
+    Q = {state: \
+             {a1: \
+                  {a0 : 1.0 for a0 in game.actions(playerA, state)}\
+             for a1 in game.actions(playerB, state)} \
+        for state in game.states()}
+    
+    V = {state: 1 for state in game.states()}
+    pi = {state: {action: 1/len(game.actions(playerA, state)) for action in game.actions(playerA, state)} for state in game.states()}
+    #initail_state = game.initial_state();
     alpha = 1.
     s = roulette(game.initial_state())
-    
-    while(): # condition d'arrêt ?
+    k = 0
+    #tanque on est arrive iteration fois au etat but
+    while(k <= iteration): 
+       
+        k+=1
         
+        if(k% display == 0):
+            print("iteration : ",k)
         # choose an action
-        a = random.choice(game.actions(p0, s)) if np.random.rand() < explor else roulette(pi[s])
-        o = random.choice(game.actions(p1, s)) # je suppose...
-        actions = {p0: a, p1: o}
+        a = random.choice(game.actions(playerA, s)) if np.random.rand() < explor else roulette(pi[s])
+        o =  choiceActPlayerB(game,s,policyplayerB)
+        actions = {playerA: a, playerB: o}
         
         # learn
-        rew = game.player0_reward(s, actions)
+        R = game.rewards(s, actions)
+        rew = R.get(playerA)
         s2 = roulette(game.transition(s, actions))
-        Q[(s, a, o)] = (1-alpha) * Q[(s, a, o)] + alpha * (rew + game.gamma() * V[s2])
-        pi[s] = # argmax(min(sum(pi[s][aa] * Q[(s, aa, oo)] for aa in game.actions(p0, s)) for oo in game.actions(p1, s))  for pi[s])
-        V[s] = min(sum(pi[s][aa] * Q[(s, aa, oo)] for aa in game.actions(p0, s)) for oo in game.actions(p1, s))
+        Q[s][o][a] = (1-alpha) * Q[s][o][a] + alpha * (rew + game.gamma() * V[s2])
+        V[s], pi[s] = sgr.maximin(game, Q[s], s,playerA,playerB)
+        s = s2
         alpha *= decay
-        
+    print("learnin rate at the end of the run : ",alpha)  
     return pi, V
     
