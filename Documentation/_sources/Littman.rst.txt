@@ -1,0 +1,7 @@
+Littman module
+==============
+
+.. automodule:: Littman
+    :members:
+    :undoc-members:
+    :show-inheritance:

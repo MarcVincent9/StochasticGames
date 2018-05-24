@@ -1,0 +1,253 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>StochasticGame module &#8212; StochasticGames 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-StochasticGame">
+<span id="stochasticgame-module"></span><h1>StochasticGame module<a class="headerlink" href="#module-StochasticGame" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="StochasticGame.StochasticGame">
+<em class="property">class </em><code class="descclassname">StochasticGame.</code><code class="descname">StochasticGame</code><a class="headerlink" href="#StochasticGame.StochasticGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Generic class for stochastic games</p>
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.actions">
+<code class="descname">actions</code><span class="sig-paren">(</span><em>player</em>, <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of given player’s possible actions in given state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>player</strong> – player ID</li>
+<li><strong>state</strong> – state</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of (tuples of) integers/strings</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.check_transitions">
+<code class="descname">check_transitions</code><span class="sig-paren">(</span><em>epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.check_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>verify that all transitions are valid probability distributions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>epsilon</strong> – error rate</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.gamma">
+<code class="descname">gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the discount factor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float in [0, 1[</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.initial_state">
+<code class="descname">initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a probability distribution for the initial state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary {state: probability}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.nb_players">
+<code class="descname">nb_players</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.nb_players" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of players.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.players">
+<code class="descname">players</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.players" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of all players.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of integers/strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.rewards">
+<code class="descname">rewards</code><span class="sig-paren">(</span><em>state</em>, <em>actions</em><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the immediate reward of all players given a state and the actions of all players. You should implement either this function or _reward(self, player, state, actions)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>state</strong> – current state</li>
+<li><strong>actions</strong> – dictionary (key: player; value: action)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary (key: player; value: reward)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.states">
+<code class="descname">states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of all states.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of (tuples of) integers/strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="StochasticGame.StochasticGame.transition">
+<code class="descname">transition</code><span class="sig-paren">(</span><em>state</em>, <em>actions</em><span class="sig-paren">)</span><a class="headerlink" href="#StochasticGame.StochasticGame.transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a probability distribution for the next state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>state</strong> – current state</li>
+<li><strong>actions</strong> – dictionary (key: player; value: action)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary {state: probability}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">StochasticGames</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Y. Mirhosseini, M. Vincent.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/StochasticGame.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

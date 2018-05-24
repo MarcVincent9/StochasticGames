@@ -1,0 +1,15 @@
+Code
+====
+
+.. toctree::
+   :maxdepth: 4
+
+   Littman
+   NullSum2PlayerStochasticGame
+   PowerGrid
+   RockPaperScissors
+   Shapley
+   Soccer
+   StaticGameResolution
+   StochasticGame
+   Test

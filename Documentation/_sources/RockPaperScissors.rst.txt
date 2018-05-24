@@ -1,0 +1,7 @@
+RockPaperScissors module
+========================
+
+.. automodule:: RockPaperScissors
+    :members:
+    :undoc-members:
+    :show-inheritance:

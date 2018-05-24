@@ -1,0 +1,7 @@
+NullSum2PlayerStochasticGame module
+===================================
+
+.. automodule:: NullSum2PlayerStochasticGame
+    :members:
+    :undoc-members:
+    :show-inheritance:

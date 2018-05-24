@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Littman module &#8212; StochasticGames 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-Littman">
+<span id="littman-module"></span><h1>Littman module<a class="headerlink" href="#module-Littman" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="Littman.MinimaxQ">
+<code class="descclassname">Littman.</code><code class="descname">MinimaxQ</code><span class="sig-paren">(</span><em>game</em>, <em>explor</em>, <em>decay</em>, <em>display</em>, <em>iteration</em>, <em>playerA</em>, <em>playerB</em>, <em>policyplayerB</em><span class="sig-paren">)</span><a class="headerlink" href="#Littman.MinimaxQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimax-Q-learning</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>game</strong> – NullSum2PlayerStochasticGame</li>
+<li><strong>explor</strong> – float</li>
+<li><strong>decay</strong> – float</li>
+<li><strong>display</strong> – integer (the number of the current iteration will be printed at every ‘display’ iterations)</li>
+<li><strong>iteration</strong> – number of iterations</li>
+<li><strong>playerA</strong> – maximizing player ID</li>
+<li><strong>playerB</strong> – minimizing player ID</li>
+<li><strong>policyplayerB</strong> – player B strategy (dictionary: {state: {action: probability}})</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">player A strategy (dictionary: {state: {action: probability}}) and value fonction (dictionary: {state: float})</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Littman.roulette">
+<code class="descclassname">Littman.</code><code class="descname">roulette</code><span class="sig-paren">(</span><em>self</em>, <em>dict</em><span class="sig-paren">)</span><a class="headerlink" href="#Littman.roulette" title="Permalink to this definition">¶</a></dt>
+<dd><p>randomly return one of the dictionary’s key according to its probability (its value)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dict</strong> – dictionary {index: probability}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">StochasticGames</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Y. Mirhosseini, M. Vincent.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/Littman.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

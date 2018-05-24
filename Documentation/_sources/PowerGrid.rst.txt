@@ -1,0 +1,7 @@
+PowerGrid module
+================
+
+.. automodule:: PowerGrid
+    :members:
+    :undoc-members:
+    :show-inheritance:

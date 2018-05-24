@@ -1,0 +1,7 @@
+StochasticGame module
+=====================
+
+.. automodule:: StochasticGame
+    :members:
+    :undoc-members:
+    :show-inheritance:

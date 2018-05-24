@@ -1,0 +1,7 @@
+Soccer module
+=============
+
+.. automodule:: Soccer
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>RockPaperScissors module &#8212; StochasticGames 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-RockPaperScissors">
+<span id="rockpaperscissors-module"></span><h1>RockPaperScissors module<a class="headerlink" href="#module-RockPaperScissors" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="RockPaperScissors.RockPaperScissors">
+<em class="property">class </em><code class="descclassname">RockPaperScissors.</code><code class="descname">RockPaperScissors</code><a class="headerlink" href="#RockPaperScissors.RockPaperScissors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="NullSum2PlayerStochasticGame.html#NullSum2PlayerStochasticGame.NullSum2PlayerStochasticGame" title="NullSum2PlayerStochasticGame.NullSum2PlayerStochasticGame"><code class="xref py py-class docutils literal"><span class="pre">NullSum2PlayerStochasticGame.NullSum2PlayerStochasticGame</span></code></a></p>
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.actions">
+<code class="descname">actions</code><span class="sig-paren">(</span><em>player</em>, <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="RockPaperScissors.RockPaperScissors.dict">
+<code class="descname">dict</code><em class="property"> = {'pierre': 0, 'papier': 1, 'ciseaux': 2}</em><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.gamma">
+<code class="descname">gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.gamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.initial_state">
+<code class="descname">initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="RockPaperScissors.RockPaperScissors.list_actions">
+<code class="descname">list_actions</code><em class="property"> = ['pierre', 'papier', 'ciseaux']</em><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.list_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.player0_reward">
+<code class="descname">player0_reward</code><span class="sig-paren">(</span><em>state</em>, <em>actions</em><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.player0_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="RockPaperScissors.RockPaperScissors.rewards_matrix">
+<code class="descname">rewards_matrix</code><em class="property"> = array([[ 0, -1,  1],        [ 1,  0, -1],        [-1,  1,  0]])</em><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.rewards_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.states">
+<code class="descname">states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.toString">
+<code class="descname">toString</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.toString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RockPaperScissors.RockPaperScissors.transition">
+<code class="descname">transition</code><span class="sig-paren">(</span><em>state</em>, <em>actions</em><span class="sig-paren">)</span><a class="headerlink" href="#RockPaperScissors.RockPaperScissors.transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">StochasticGames</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Y. Mirhosseini, M. Vincent.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/RockPaperScissors.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

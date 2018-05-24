@@ -1,0 +1,7 @@
+StaticGameResolution module
+===========================
+
+.. automodule:: StaticGameResolution
+    :members:
+    :undoc-members:
+    :show-inheritance:

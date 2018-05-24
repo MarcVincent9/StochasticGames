@@ -1,0 +1,7 @@
+Shapley module
+==============
+
+.. automodule:: Shapley
+    :members:
+    :undoc-members:
+    :show-inheritance:
